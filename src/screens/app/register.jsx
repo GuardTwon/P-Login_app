@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {useNavigate } from "react-router-dom"
+import Dashboar from "./dashboard";
 
 export default function Register() {
   let redi1= useNavigate()
@@ -7,21 +8,26 @@ export default function Register() {
   const [name, setname] = useState();
   const [email, setemail] = useState();
   const [pasword, setpasword] = useState();
+  
   function manejador() {
    
+   
   //  indico que en storage guarde las credenciales en un jason que tranforma a string en name elaml, pasword
-    localStorage.setItem(
+    
+  localStorage.setItem(
       "Credencials",
-      JSON.stringify({ name, email, pasword })
+      JSON.stringify({ name, email, pasword})
       
     );
     // redireccion a login
-    redi1("/login")
+    redi1("/l")
   }
   
   return (
+    <>
+    <Dashboar/>
     <form onSubmit={manejador}>
-      <>
+      
         <div class="w-100 bg-info vh-100 ">
           <h1 class="text-center text-light p-4"> Register</h1>
           <div class="mx-auto mt-5 col-3 bg-bg-danger p-5 border border-1 border-dark bg-light">
@@ -64,7 +70,7 @@ export default function Register() {
             </button>
           </div>
         </div>
-      </>
     </form>
+      </>
   );
 }
